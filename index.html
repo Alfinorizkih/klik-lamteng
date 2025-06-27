@@ -3,17 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KlikLamteng | Portal Resmi Lampung Tengah</title>
-    <link rel="icon" href="kl.webp" type="image/webp">
+    <title>KlikLamteng | Portal Utama</title>
+    <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvV1rdE2z5Vco5rx_z8I5ed_QQs1GWaQcues2IMhLyZ-vQoWRlOMp0aVFl0k6CsM5vXtIJ_dn5jWtfdwDBIpNY2aIgiJi2apDfw7LbYx8REkZ2U9z3yDlj4niNWxqrC-hq7bo2oXf61IdHaNLlZAfcdpXCgmGrDZhyuPXnTA2ovNIYtpEfk4qVlz1TouA/s1080/1750760082933.png" type="image/png">
     <style>
         :root {
             --primary: #2563EB;
             --primary-light: #3B82F6;
             --primary-dark: #1E40AF;
+            --primary-gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
             --light: #F8FAFC;
             --dark: #1E293B;
             --gray: #64748B;
+            --gray-light: #E2E8F0;
+            --white: #FFFFFF;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 8px;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
         }
 
         * {
@@ -31,25 +42,38 @@
             justify-content: center;
             align-items: center;
             line-height: 1.5;
+            padding: 1rem;
+            background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvV1rdE2z5Vco5rx_z8I5ed_QQs1GWaQcues2IMhLyZ-vQoWRlOMp0aVFl0k6CsM5vXtIJ_dn5jWtfdwDBIpNY2aIgiJi2apDfw7LbYx8REkZ2U9z3yDlj4niNWxqrC-hq7bo2oXf61IdHaNLlZAfcdpXCgmGrDZhyuPXnTA2ovNIYtpEfk4qVlz1TouA/s1080/1750760082933.png');
+            background-size: 30%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+            background-color: rgba(248, 250, 252, 0.9);
         }
 
         .container {
             width: 100%;
             max-width: 480px;
-            padding: 2rem;
         }
 
         /* Premium Card */
         .card {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem 2.5rem;
-            box-shadow: 
-                0 10px 15px -3px rgba(0, 0, 0, 0.02),
-                0 4px 6px -2px rgba(0, 0, 0, 0.01);
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-light);
             position: relative;
             overflow: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
 
         .card::before {
@@ -57,9 +81,9 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
+            width: 5px;
             height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
+            background: var(--primary-gradient);
         }
 
         /* Header Section */
@@ -67,93 +91,134 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
         }
 
         .logo-container {
-            width: 100px;
-            height: 100px;
+            width: 96px;
+            height: 96px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: white;
+            background: var(--white);
             border-radius: 50%;
             margin-bottom: 1.5rem;
-            box-shadow: 
-                0 10px 20px -5px rgba(37, 99, 235, 0.1),
-                0 0 0 1px rgba(0, 0, 0, 0.02);
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-light);
+            transition: var(--transition);
+            padding: 5px;
+        }
+
+        .card:hover .logo-container {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.2);
         }
 
         .logo {
-            width: 55px;
-            height: 55px;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .card:hover .logo {
+            transform: scale(1.03);
         }
 
         .title {
-            font-size: 1.8rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--dark);
             margin-bottom: 0.5rem;
             letter-spacing: -0.5px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: var(--transition);
         }
 
         .subtitle {
-            font-size: 0.95rem;
+            font-size: 0.925rem;
             color: var(--gray);
-            font-weight: 400;
+            font-weight: 500;
             max-width: 80%;
             text-align: center;
+            line-height: 1.6;
         }
 
         /* Links */
         .links {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
         }
 
         .link {
             display: flex;
             align-items: center;
-            padding: 1.1rem 1.75rem;
+            padding: 1rem 1.5rem;
             background: var(--light);
-            border-radius: 12px;
+            border-radius: var(--radius);
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
             transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--gray-light);
             position: relative;
+            overflow: hidden;
+        }
+
+        .link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--primary);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: var(--transition);
         }
 
         .link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px -5px rgba(37, 99, 235, 0.1);
-            border-color: rgba(37, 99, 235, 0.1);
+            box-shadow: var(--shadow);
+            border-color: rgba(37, 99, 235, 0.15);
+        }
+
+        .link:hover::after {
+            transform: scaleY(1);
         }
 
         .link i {
             margin-right: 1rem;
             color: var(--primary);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             width: 24px;
             text-align: center;
+            transition: var(--transition);
+        }
+
+        .link:hover i {
+            transform: scale(1.1);
         }
 
         /* Social Icons */
         .socials {
             display: flex;
             justify-content: center;
-            gap: 1.25rem;
+            gap: 1rem;
             margin-top: 1.5rem;
         }
 
         .social {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -161,22 +226,93 @@
             color: var(--gray);
             border-radius: 50%;
             transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--gray-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .social i {
+            position: relative;
+            z-index: 1;
         }
 
         .social:hover {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.1);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .social:hover::before {
+            opacity: 1;
+        }
+
+        .social:hover i {
+            color: var(--white);
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            margin-top: 2.5rem;
+            margin-top: 2rem;
             font-size: 0.75rem;
             color: var(--gray);
             letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .link:nth-child(1) { animation: fadeIn 0.6s ease-out 0.1s forwards; opacity: 0; }
+        .link:nth-child(2) { animation: fadeIn 0.6s ease-out 0.2s forwards; opacity: 0; }
+        .link:nth-child(3) { animation: fadeIn 0.6s ease-out 0.3s forwards; opacity: 0; }
+        .link:nth-child(4) { animation: fadeIn 0.6s ease-out 0.4s forwards; opacity: 0; }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            body {
+                background-size: 50%;
+            }
+            
+            .card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .logo-container {
+                width: 84px;
+                height: 84px;
+            }
+            
+            .title {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 0.875rem;
+            }
+            
+            .link {
+                padding: 0.875rem 1.25rem;
+                font-size: 0.9375rem;
+            }
         }
     </style>
     <!-- Font Awesome -->
@@ -189,41 +325,49 @@
         <div class="card">
             <div class="header">
                 <div class="logo-container">
-                    <img src="kl.webp" alt="KlikLamteng" class="logo">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvV1rdE2z5Vco5rx_z8I5ed_QQs1GWaQcues2IMhLyZ-vQoWRlOMp0aVFl0k6CsM5vXtIJ_dn5jWtfdwDBIpNY2aIgiJi2apDfw7LbYx8REkZ2U9z3yDlj4niNWxqrC-hq7bo2oXf61IdHaNLlZAfcdpXCgmGrDZhyuPXnTA2ovNIYtpEfk4qVlz1TouA/s1080/1750760082933.png" alt="KlikLamteng" class="logo">
                 </div>
                 <h1 class="title">KlikLamteng</h1>
-                <p class="subtitle">Portal Resmi Pemerintah Kabupaten Lampung Tengah</p>
+                <p class="subtitle">Klik Lamteng adalah media lokal independen yang menyajikan informasi seputar Lampung Tengah, mulai dari event, budaya, hingga isu masyarakat. Bukan milik pemerintah, Klik Lamteng hadir sebagai ruang kreatif dan informatif bagi warga lokal.</p>
             </div>
 
             <div class="links">
-                <a href="#" class="link">
-                    <i class="fas fa-newspaper"></i> Berita Terkini
+                <a href="https://berita.kliklamtengku.web.id" target="_blank" class="link">
+                    <i class="fas fa-newspaper"></i> Baca Berita Disini
                 </a>
-                <a href="#" class="link">
-                    <i class="fas fa-bullhorn"></i> Pengumuman Resmi
+                <a href="https://event.kliklamtengku.web.id" target="_blank" class="link">
+                    <i class="fas fa-calendar-check"></i> Lihat Event di Lampung Tengah
                 </a>
-                <a href="#" class="link">
-                    <i class="fas fa-chart-line"></i> Data & Statistik
+                <a href="https://whatsapp.com/channel/0029VbA2jPeGU3BQQaPLkN3P" target="_blank" class="link">
+                    <i class="fab fa-whatsapp"></i> Channel WhatsApp Resmi
                 </a>
-                <a href="#" class="link">
-                    <i class="fas fa-calendar-check"></i> Agenda Kegiatan
+                <a href="https://instagram.com/kliklamteng" target="_blank" class="link">
+                    <i class="fab fa-instagram"></i> Instagram @kliklamteng
                 </a>
-                <a href="#" class="link">
-                    <i class="fas fa-envelope-open-text"></i> Layanan Publik
+                 <a href="https://whatsform.com/hmblYj" target="_blank" class="link">
+                    <i class="fas fa-calendar-plus"></i> Laporan Event Di Lampung Tengah
+                </a>
+                   <a href="https://wa.me/message/4ICNQ3NREOPWG1" target="_blank" class="link">
+                    <i class="fab fa-whatsapp"></i> Kerjasama/Media Partner/Lapor Informasi<!DOCTYPE html>
+                    <html lang="in">
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>Judul halaman</title>
+                    </head>
+                    <body>
+                        
+                    </body>
+                    </html>
                 </a>
             </div>
 
-            <div class="socials">
-                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social"><i class="fab fa-youtube"></i></a>
+                <a href="https://instagram.com/kliklamteng" target="_blank" class="social"><i class="fab fa-instagram"></i></a>
             </div>
 
             <div class="footer">
-                © 2023 KlikLamteng. Informasi Resmi Pemerintah Daerah.
+                Copyright @ 2025 KlikLamteng, All right reserved
             </div>
         </div>
     </div>
 </body>
-</html>
+                        </html>
